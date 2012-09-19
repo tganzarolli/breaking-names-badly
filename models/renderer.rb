@@ -4,7 +4,7 @@ Magick::RVG::dpi = 72
 class Renderer
   attr_accessor :element, :square_x, :square_y, :square_size, :sufix, :prefix
   SQUARE_TEXT_COLOR = 'white'  
-  DESTINATION_PATH = (ENV['RACK_ENV']=='production' ? "#{settings.root}/tmp" : "/tmp")
+  DESTINATION_PATH = (ENV['RACK_ENV']=='production' ? "#{settings.root}/tmp" : "tmp")
   def initialize(params={})
     params.each{|k,v| instance_variable_set("@#{k}", v) }
     @color_scheme ||= color_scheme=ColorScheme::Classic

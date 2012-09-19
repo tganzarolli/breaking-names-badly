@@ -3,3 +3,4 @@ log/
 .rvmrc
 .DS_Store
 *.swp
+tmp/

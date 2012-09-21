@@ -30,7 +30,7 @@ class Renderer
     @start = @square_x
     text_y = -28
     font_size = relative_font_size(60)
-    @square_x += (0.50 * (1 + @prefix.size) * font_size) if @prefix.size > 0
+    @square_x += (0.55 * (0.7 + @prefix.size) * font_size) if @prefix.size > 0
 
     if @element
 

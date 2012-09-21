@@ -36,8 +36,8 @@ describe BreakingService do
       BreakingService.new('José Pedro', 'da Silva').make_me_bad
     end
     
-    it 'should draw american name' do
-      BreakingService.new('German', nil).make_me_bad
+    it 'should draw mexican name' do
+      BreakingService.new('Mexican', nil, :color_scheme => ColorScheme::FanMade, :background => 'dark_knight.jpg').make_me_bad
     end
 
   end

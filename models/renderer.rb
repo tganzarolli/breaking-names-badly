@@ -20,7 +20,7 @@ class Renderer
     base = base.resize_to_fill(851, 315, Magick::CenterGravity)
     combined = base.composite(name_img, Magick::CenterGravity, 70, 80, Magick::OverCompositeOp) #the 0,0 is the x,y
     combined.format = 'jpeg'
-    combined.write("#{DESTINATION_PATH}/#{name}_final.jpg")
+    combined.write("#{DESTINATION_PATH}/#{name}.jpg")
   end
 
   def draw(canvas)
@@ -30,7 +30,7 @@ class Renderer
     @start = @square_x
     text_y = -28
     font_size = relative_font_size(60)
-    @square_x += (0.48 * (1 + @prefix.size) * font_size) if @prefix.size > 0
+    @square_x += (0.50 * (1 + @prefix.size) * font_size) if @prefix.size > 0
 
     if @element
 

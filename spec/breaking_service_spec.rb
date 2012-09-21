@@ -35,6 +35,10 @@ describe BreakingService do
     it 'should draw composite names' do
       BreakingService.new('José Pedro', 'da Silva').make_me_bad
     end
+    
+    it 'should draw american name' do
+      BreakingService.new('German', nil).make_me_bad
+    end
 
   end
 end

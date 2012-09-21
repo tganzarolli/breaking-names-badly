@@ -19,7 +19,7 @@ class BreakingService
     bad_name = @@algorithm.scan(@name)
     bad_surname = (@surname && @@algorithm.scan(@surname)) || nil
     raise Exception.new('Unbreakable! Join the DEA') unless bad_name || bad_surname
-    Renderer.draw(@name, @params) do |canvas|
+    Renderer.draw(file_name, @params) do |canvas|
       name_opts = split_words(bad_name, @name).merge(:element => bad_name && bad_name.element || nil)
       name_opts[:color_scheme] = @params[:color_scheme]
       Renderer.new(name_opts).draw(canvas)
@@ -31,8 +31,11 @@ class BreakingService
     end
   end
   
+  def file_name
+    @file_name ||= "#{Time.now.usec}#{@params[:facebook_id]}"
+  end
+
   protected
-  
   def split_words(bad, name)
     if !bad
       {:prefix => name}

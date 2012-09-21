@@ -1,6 +1,6 @@
 require "sinatra"
 require 'koala'
-
+require_relative 'config/initializers/spices'
 enable :sessions
 set :raise_errors, false
 set :show_exceptions, false
@@ -76,6 +76,11 @@ end
 # used by Canvas apps - redirect the POST to be a regular GET
 post "/" do
   redirect "/"
+end
+
+get "/spice_it" do
+  @spices = Spice::menu
+  erb :spice_it
 end
 
 get "/make_me_bad" do

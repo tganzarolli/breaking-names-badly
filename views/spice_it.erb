@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:fb="http://ogp.me/ns/fb#" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, user-scalable=yes" />
+
+    <title>Breaking names badly</title>
+    <link rel="stylesheet" href="stylesheets/screen.css" media="Screen" type="text/css" />
+    <link rel="stylesheet" href="stylesheets/mobile.css" media="handheld, only screen and (max-width: 480px), only screen and (max-device-width: 480px)" type="text/css" />
+  </head>
+  <body>
+
+    <h1>BREAKING NAMES BADLY</h1>
+
+    <br />
+
+    <section class="background_select">
+      <p>Ooops... It looks like the Periodic Table didn't react well with your name. Do you want to fix that?! Choose your spice and we'll take care of the rest:</p>
+      <br><br>
+      <% @spices.each_key do |spice| %>
+        <p><%= spice %></p>
+        <div><img src="<%= "/images/spices/#{spice}.jpg" %>" /></div>
+      <% end %>
+    </section>
+
+    <button>Spice it up!</button>
+  </body>
+</html>

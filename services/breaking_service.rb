@@ -3,16 +3,16 @@ class BreakingService
   def initialize(name, surname=nil)
     @name = name
     @surname = surname
-    @algorithm = Algorithm.new
+    @@algorithm ||= Algorithm.new
   end
   
   def make_me_bad
-    bad_name = @algorithm.scan(@name)
-    bad_surname = (@surname && @algorithm.scan(@surname)) || nil
+    bad_name = @@algorithm.scan(@name)
+    bad_surname = (@surname && @@algorithm.scan(@surname)) || nil
     raise Exception.new('Unbreakable! Join the DEA') unless bad_name || bad_surname
     Renderer.draw(@name) do |canvas| 
-      Renderer.new(split_words(bad_name).merge(:element => bad_name.element)).draw(canvas)
-      Renderer.new(split_words(bad_surname).merge(:element => bad_surname.element, :square_x => 106, :square_y => 160)).draw(canvas) if bad_surname
+      Renderer.new(split_words(bad_name, @name).merge(:element => bad_name.element)).draw(canvas)
+      Renderer.new(split_words(bad_surname, @surname).merge(:element => bad_surname.element, :square_x => 106, :square_y => 160)).draw(canvas) if bad_surname
     end
   end
   

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:fb="http://ogp.me/ns/fb#" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, user-scalable=yes" />
+
+    <title>Breaking names badly</title>
+    <link rel="stylesheet" href="stylesheets/screen.css" media="Screen" type="text/css" />
+    <link rel="stylesheet" href="stylesheets/mobile.css" media="handheld, only screen and (max-width: 480px), only screen and (max-device-width: 480px)" type="text/css" />
+  </head>
+  <body>
+
+    <h1>BREAKING NAMES BADLY</h1>
+
+    <section class="user_info">
+      <p><%= @user %></p>
+      <img src="<%= "https://graph.facebook.com/#{@user['id']}/picture?type=large" %>" />
+      <p><%= @user['name'] %></p>
+    </section>
+
+
+    <section class="background_select">
+      <p>Choose your background:</p>
+
+      <% @backgrounds.each do |bg| %>
+        <img src="<%= "/images/backgrounds/#{bg}" %>" />
+      <% end %>
+    </section>
+
+    <button>Make me bad!</button>
+  </body>
+</html>

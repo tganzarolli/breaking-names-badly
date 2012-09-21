@@ -1,6 +1,6 @@
 require_relative '../models/color_scheme/base_color_scheme'
 class BreakingService
-  def initialize(name, surname=nil)
+  def initialize(name, surname=nil, params={})
     @name = name
     @surname = surname
     @@algorithm ||= Algorithm.new

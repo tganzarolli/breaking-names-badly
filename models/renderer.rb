@@ -5,6 +5,7 @@ class Renderer
   attr_accessor :element, :square_x, :square_y, :square_size, :sufix, :prefix
   SQUARE_TEXT_COLOR = 'white'  
   DESTINATION_PATH = (ENV['RACK_ENV']=='production' ? "#{settings.root}/tmp" : "tmp")
+  BACKGROUND_PATH = 'public/images/backgrounds/'
   def initialize(params={})
     params.each{|k,v| instance_variable_set("@#{k}", v) }
     @color_scheme ||= color_scheme=ColorScheme::Classic
@@ -13,7 +14,7 @@ class Renderer
   def self.draw(name, wallpaper='bb_wallpaper.jpeg')
     rvg = Magick::RVG.new(10.in, 6.in) {|canvas| yield canvas }
     name_img = rvg.draw
-    base = Magick::Image.read(wallpaper).first
+    base = Magick::Image.read(BACKGROUND_PATH + wallpaper).first
     #formato do cover do facebook (com crop no meio)
     base = base.resize_to_fill(851, 315, Magick::CenterGravity)
     combined = base.composite(name_img, Magick::CenterGravity, 70, 80, Magick::OverCompositeOp) #the 0,0 is the x,y

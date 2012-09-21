@@ -79,7 +79,7 @@ post "/" do
 end
 
 get "/spice_it" do
-  @spices = Spice::menu
+  @spices = Hash[*Spice::menu.sort.flatten]
   erb :spice_it
 end
 

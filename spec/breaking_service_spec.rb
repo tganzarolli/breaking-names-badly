@@ -1,3 +1,5 @@
+# -*- encoding : utf-8 -*-
+
 require_relative '../models/element'
 require_relative '../config/initializers/elements'
 require_relative '../models/algorithm'
@@ -19,7 +21,15 @@ describe BreakingService do
     end
 
     it 'should throw exception' do
-      expect { BreakingService.new('Aaa').make_me_bad }.to raise_error(Exception)
+      expect { BreakingService.new('Ada').make_me_bad }.to raise_error(Exception)
+    end
+
+    it 'should draw only surname' do
+      BreakingService.new('Ada', 'Strong').make_me_bad
+    end
+
+    it 'should draw composite names' do
+      BreakingService.new('José Pedro', 'da Silva').make_me_bad
     end
 
   end

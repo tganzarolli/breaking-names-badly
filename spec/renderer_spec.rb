@@ -16,7 +16,7 @@ describe Renderer do
   end
   it 'should draw yet another square' do
     name = 'Thiago'
-    Renderer.draw(name, wallpaper='dark_knight.jpg') do |canvas| 
+    Renderer.draw(name, :wallpaper => 'dark_knight.jpg') do |canvas| 
       Renderer.new(:element => Element.find_by_symbol('I'), :prefix => 'Th', :sufix => 'ago', :color_scheme => ColorScheme::FanMade).draw(canvas)
       Renderer.new(:element => Element.find_by_symbol('Ga'), :prefix => '', :sufix => 'nzarolli', :square_x => 106, :square_y => 160, :color_scheme => ColorScheme::FanMade).draw(canvas)
     end

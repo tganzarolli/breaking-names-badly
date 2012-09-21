@@ -11,7 +11,8 @@ class Renderer
     @color_scheme ||= color_scheme=ColorScheme::Classic
   end
 
-  def self.draw(name, wallpaper='bb_wallpaper.jpeg')
+  def self.draw(name, params={})
+    wallpaper = params[:background] || 'bb_wallpaper.jpeg'
     rvg = Magick::RVG.new(10.in, 6.in) {|canvas| yield canvas }
     name_img = rvg.draw
     base = Magick::Image.read(BACKGROUND_PATH + wallpaper).first

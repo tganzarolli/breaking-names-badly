@@ -9,7 +9,12 @@ class BreakingService
     @surname = surname
     @params = params
   end
-  
+
+  def spice_it_up(flavor, gender)
+    @name = "#{Spice::menu[flavor][gender || :male]} #{@name}"
+    self
+  end
+
   def make_me_bad
     bad_name = @@algorithm.scan(@name)
     bad_surname = (@surname && @@algorithm.scan(@surname)) || nil

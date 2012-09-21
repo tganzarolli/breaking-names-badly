@@ -24,6 +24,10 @@ describe BreakingService do
       expect { BreakingService.new('Ada').make_me_bad }.to raise_error(Exception)
     end
 
+    it 'shouldnt throw exception if spiced' do
+      BreakingService.new('Ada').spice_it_up(:german, :female).make_me_bad
+    end
+
     it 'should draw only surname' do
       BreakingService.new('Ada', 'Strong').make_me_bad
     end

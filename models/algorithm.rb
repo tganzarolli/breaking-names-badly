@@ -1,3 +1,6 @@
+require_relative 'element'
+require_relative '../config/initializers/elements'
+
 Bad = Struct.new(:position, :element)
 class Algorithm
 

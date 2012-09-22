@@ -1,5 +1,7 @@
 require_relative '../models/color_scheme/base_color_scheme'
 require_relative '../config/initializers/spices'
+require_relative '../models/algorithm'
+require_relative '../models/renderer'
 
 class BreakingService
 

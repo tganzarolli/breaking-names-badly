@@ -1,6 +1,9 @@
 require "sinatra"
 require 'koala'
 require_relative 'config/initializers/spices'
+require_relative 'services/breaking_service'
+require_relative 'services/upload_service'
+
 enable :sessions
 set :raise_errors, false
 set :show_exceptions, false
@@ -101,6 +104,12 @@ get "/make_me_bad" do
   end
   @backgrounds = ['bb_wallpaper.jpeg', 'dark_knight.jpg']
   erb :make_me_bad
+end
+
+post "/upload" do
+  @graph = Koala::Facebook::API.new(session[:access_token])
+  me = @graph.get_object("me")
+  UploadService.upload(@graph, BreakingService.new(me['first_name'], me['middle_name'] || me['last_name'] , :to_blob => true).make_me_bad, 'My Breaking Bad Name')
 end
 
 # used to close the browser window opened to post to wall/send to friends

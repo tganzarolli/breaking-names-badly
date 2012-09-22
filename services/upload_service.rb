@@ -7,7 +7,7 @@ class UploadService
   def self.upload(graph, blob, message)
     StringIO.open(blob) do |strio|
       response = graph.put_picture(strio, "image/jpeg", { "message" => message })
-      photo_id = '10151008281030927'response['id']
+      photo_id = response['id']
       photo = graph.get_object(photo_id)
 
       alternative = {

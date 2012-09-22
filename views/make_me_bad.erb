@@ -19,13 +19,17 @@
 
     <br />
 
-    <section class="background_select">
+    <form>
       <p>Choose your background:</p>
+
 
       <% @backgrounds.each do |bg| %>
         <img src="<%= "/images/backgrounds/#{bg}" %>" />
+        <input type="radio" name="group1" value="Milk">
+        <br />
       <% end %>
-    </section>
+
+    </form>
 
     <button>Make me bad!</button>
   </body>

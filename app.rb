@@ -70,6 +70,7 @@ get "/" do
     # for other data you can always run fql
     @friends_using_app = @graph.fql_query("SELECT uid, name, is_app_user, pic_square FROM user WHERE uid in (SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1")
   end
+  @backgrounds = ['bb_wallpaper.jpeg', 'dark_knight.jpg']
   erb :index
 end
 
@@ -83,7 +84,7 @@ get "/spice_it" do
   erb :spice_it
 end
 
-get "/make_me_bad" do
+get "/old_index" do
   # Get base API Connection
   @graph  = Koala::Facebook::API.new(session[:access_token])
 
@@ -99,7 +100,6 @@ get "/make_me_bad" do
     # for other data you can always run fql
     @friends_using_app = @graph.fql_query("SELECT uid, name, is_app_user, pic_square FROM user WHERE uid in (SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1")
   end
-  @backgrounds = ['bb_wallpaper.jpeg', 'dark_knight.jpg']
   erb :make_me_bad
 end
 

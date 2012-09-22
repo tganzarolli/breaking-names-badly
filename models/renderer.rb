@@ -20,7 +20,6 @@ class Renderer
     base = base.resize_to_fill(851, 315, Magick::CenterGravity)
     combined = base.composite(name_img, Magick::CenterGravity, 70, 80, Magick::OverCompositeOp) #the 0,0 is the x,y
     combined.format = 'jpeg'
-    
     return combined.to_blob if params[:to_blob]
     combined.write("#{DESTINATION_PATH}/#{name}.jpg")
 

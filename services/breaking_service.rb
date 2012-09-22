@@ -17,10 +17,15 @@ class BreakingService
     self
   end
 
-  def make_me_bad
+  def stage_it
+    make_me_bad(true)
+  end
+
+  def make_me_bad(stage=false)
     bad_name = @@algorithm.scan(@name)
     bad_surname = (@surname && @@algorithm.scan(@surname)) || nil
     raise Exception.new('Unbreakable! Join the DEA') unless bad_name || bad_surname
+    return if stage
     Renderer.draw(file_name, @params) do |canvas|
       name_opts = split_words(bad_name, @name).merge(:element => bad_name && bad_name.element || nil)
       name_opts[:color_scheme] = @params[:color_scheme]

@@ -40,5 +40,13 @@ describe BreakingService do
       BreakingService.new('Mexican', nil, :color_scheme => ColorScheme::FanMade, :background => 'dark_knight.jpg').make_me_bad
     end
 
+    it 'should stage it' do
+      BreakingService.new('José Pedro', 'da Silva').stage_it
+    end
+
+    it 'should stage a error' do
+      expect { BreakingService.new('Ada').stage_it }.to raise_error(Exception)
+    end
+
   end
 end

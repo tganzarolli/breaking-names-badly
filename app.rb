@@ -111,7 +111,13 @@ post "/make_me_bad" do
   me = @graph.get_object("me")
   #TODO colocar wallpaper
   #breaking_service = BreakingService.new(me['first_name'], me['middle_name'] || me['last_name'] , :to_blob => true, :wallpaper => '')
-  breaking_service = BreakingService.new(me['first_name'], me['middle_name'] || me['last_name'] , :to_blob => true)
+  breaking_service = BreakingService.new(me['first_name'], me['middle_name'] || me['last_name'], :to_blob => true)
+  begin
+    breaking_service.stage_it
+  rescue
+    redirect '/spice_it'
+  end
+  #TODO esta chamada poderia rodar assincronamente
   @photo_id = UploadService.upload(@graph, breaking_service.make_me_bad, 'My Breaking Bad Name')
 end
 

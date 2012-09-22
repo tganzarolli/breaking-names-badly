@@ -109,7 +109,10 @@ end
 post "/make_me_bad" do
   @graph = Koala::Facebook::API.new(session[:access_token])
   me = @graph.get_object("me")
-  @photo_id = UploadService.upload(@graph, BreakingService.new(me['first_name'], me['middle_name'] || me['last_name'] , :to_blob => true).make_me_bad, 'My Breaking Bad Name')
+  #TODO colocar wallpaper
+  #breaking_service = BreakingService.new(me['first_name'], me['middle_name'] || me['last_name'] , :to_blob => true, :wallpaper => '')
+  breaking_service = BreakingService.new(me['first_name'], me['middle_name'] || me['last_name'] , :to_blob => true)
+  @photo_id = UploadService.upload(@graph, breaking_service.make_me_bad, 'My Breaking Bad Name')
 end
 
 # used to close the browser window opened to post to wall/send to friends

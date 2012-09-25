@@ -106,9 +106,7 @@ end
 post "/make_me_bad" do
   @graph = Koala::Facebook::API.new(session[:access_token])
   me = @graph.get_object("me")
-  #TODO colocar wallpaper
-  #breaking_service = BreakingService.new(me['first_name'], me['middle_name'] || me['last_name'] , :to_blob => true, :wallpaper => '')
-  breaking_service = BreakingService.new(me['first_name'], me['middle_name'] || me['last_name'], :to_blob => true)
+  breaking_service = BreakingService.new(me['first_name'], me['middle_name'] || me['last_name'], :to_blob => true, :wallpaper => params[:background])
   begin
     breaking_service.stage_it
   rescue

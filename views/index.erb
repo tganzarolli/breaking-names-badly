@@ -60,19 +60,17 @@
 
       <br />
 
-      <form>
+      <form action='make_me_bad' method='post'>
         <p>Choose your background:</p>
-
-
         <% @backgrounds.each do |bg| %>
           <img src="<%= "/images/backgrounds/#{bg}" %>" />
-          <input type="radio" name="group1" value="Milk">
+          <input type="radio" name="background" value="<%= bg %>">
           <br />
         <% end %>
 
+        <input type="submit" value="Make me bad!">
       </form>
 
-      <button>Make me bad!</button>
     <% end %>
   </body>
 </html>

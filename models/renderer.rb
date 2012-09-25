@@ -1,4 +1,6 @@
 require 'rvg/rvg'
+require 'open-uri'
+
 Magick::RVG::dpi = 72
 
 class Renderer
@@ -12,12 +14,9 @@ class Renderer
   end
 
   def self.draw(name, params={})
-    wallpaper = params[:background] || 'bb_wallpaper.jpeg'
+    base = render_wallpaper(params)
     rvg = Magick::RVG.new(10.in, 6.in) {|canvas| yield canvas }
     name_img = rvg.draw
-    base = Magick::Image.read(BACKGROUND_PATH + wallpaper).first
-    #formato do cover do facebook (com crop no meio)
-    base = base.resize_to_fill(851, 315, Magick::CenterGravity)
     combined = base.composite(name_img, Magick::CenterGravity, 70, 80, Magick::OverCompositeOp) #the 0,0 is the x,y
     combined.format = 'jpeg'
     return combined.to_blob if params[:to_blob]
@@ -61,7 +60,20 @@ class Renderer
 
   end
   
-  protected 
+  protected
+
+  def self.render_wallpaper(params)
+    if params[:background_url]
+      base = Magick::ImageList.new
+      base.from_blob(open(params[:background_url]).read)
+    else
+      wallpaper = params[:background] || 'bb_wallpaper.jpeg'
+      base = Magick::Image.read(BACKGROUND_PATH + wallpaper).first
+      #formato do cover do facebook (com crop no meio)
+      base = base.resize_to_fill(851, 315, Magick::CenterGravity)
+    end
+  end
+
   def square_offset(offset_x, offset_y)
     [@square_x + @square_size + (offset_x/100.0)*@square_size, @square_y + @square_size + (offset_y/100.0)*@square_size]
   end

@@ -1,8 +1,17 @@
 require 'stringio'
+require 'open-uri'
+require 'json'
 
 class UploadService
 
   APP_URL = 'https://www.facebook.com/breaking-names-badly'
+  USER_COVER = 'https://graph.facebook.com/fql?q=SELECT%20pic_cover%20FROM%20user%20WHERE%20uid=me()&access_token='
+  
+  def self.user_cover_as_binary(access_token)
+    cover_data = open(USER_COVER + access_token).read
+    cover_data_map = JSON.parse cover_data
+    image_url = cover_data_map['data'][0]['pic_cover']['source']
+  end
 
   def self.upload(graph, blob, message)
     StringIO.open(blob) do |strio|

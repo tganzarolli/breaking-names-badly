@@ -44,6 +44,9 @@
       <% else %>
         <div>
           <h1>Welcome</h1>
+            <script>
+              window.top.location = '/auth/facebook';
+            </script>
             <a href='/auth/facebook' class="fb_button fb_button_medium">
               <span class="fb_button_text">Log In</span>
             </a>

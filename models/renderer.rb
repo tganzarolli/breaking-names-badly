@@ -67,7 +67,7 @@ class Renderer
       base = Magick::ImageList.new
       base.from_blob(open(params[:background_url]).read)
     else
-      wallpaper = params[:background] || 'bb_wallpaper.jpeg'
+      wallpaper = params[:background] || 'bb_wallpaper.jpg'
       base = Magick::Image.read(BACKGROUND_PATH + wallpaper).first
       #formato do cover do facebook (com crop no meio)
       base = base.resize_to_fill(851, 315, Magick::CenterGravity)

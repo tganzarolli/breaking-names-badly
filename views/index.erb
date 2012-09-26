@@ -10,9 +10,9 @@
   </head>
   <body>
 
-    <h1>BREAKING NAMES BADLY</h1>
-    <header class="clearfix">
       <% if @user %>
+      <h1>BREAKING NAMES BADLY</h1>
+        <header class="clearfix">
           <p id="picture" style="background-image: url(https://graph.facebook.com/<%= @user['id'] %>/picture?type=normal)"></p>
           <div>
             <h1>Welcome, <strong><%= @user['name'] %></strong></h1>
@@ -41,16 +41,16 @@
               </ul>
             </div>
           </div>
+      </header>
       <% else %>
         <div>
-          <h1>Arguarde...</h1>
+          <h1>Please hold on a second...</h1>
             <script>
               window.top.location = '/auth/facebook';
             </script>
         </div>
 
       <% end %>
-    </header>
 
     <% if @user %>
       <section class="user_info">

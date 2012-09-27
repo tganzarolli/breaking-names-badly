@@ -37,7 +37,7 @@ describe BreakingService do
     end
     
     it 'should draw mexican name' do
-      BreakingService.new('Davizeitor', nil, :color_scheme => ColorScheme::FanMade, :background => 'heisenberg.jpg').make_me_bad
+      BreakingService.new('Davizeitor', nil, :color_scheme => ColorScheme::FanMade, :wallpaper => 'heisenberg.jpg').make_me_bad
     end
 
     it 'should stage it' do

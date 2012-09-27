@@ -25,10 +25,10 @@ class UploadService
        "description" => "Add some chemistry to your timeline, great to use as a cover, Breaking Bad fan or not.",
        "picture" => photo['picture']}
        
-      graph.put_wall_post("Check out my Breaking Bad name! You can create your own here #{APP_URL}", {
+      response = graph.put_wall_post("Check out my Breaking Bad name! You can create your own here #{APP_URL}", {
                      "link" => photo['link'],
                    })
-      photo_id
+      response['id']
     end
     
   end

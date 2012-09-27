@@ -113,7 +113,8 @@ post "/make_me_bad" do
     redirect '/spice_it'
   end
   #TODO esta chamada poderia rodar assincronamente
-  @photo_id = UploadService.upload(@graph, breaking_service.make_me_bad, 'My Breaking Bad Name')
+  @post_id = UploadService.upload(@graph, breaking_service.make_me_bad, 'My Breaking Bad Name')
+  redirect "https://www.facebook.com/#{@post_id}"
 end
 
 # used to close the browser window opened to post to wall/send to friends

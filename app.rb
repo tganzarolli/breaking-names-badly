@@ -114,7 +114,7 @@ post "/make_me_bad" do
   end
   #TODO esta chamada poderia rodar assincronamente
   @post_id = UploadService.upload(@graph, breaking_service.make_me_bad, 'My Breaking Bad Name')
-  redirect "https://www.facebook.com/#{@post_id}"
+  erb :wall_post
 end
 
 # used to close the browser window opened to post to wall/send to friends

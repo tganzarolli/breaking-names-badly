@@ -15,7 +15,7 @@ class UploadService
 
   def self.upload(graph, blob, message)
     StringIO.open(blob) do |strio|
-      response = graph.put_picture(strio, "image/jpeg", { "message" => message })
+      response = graph.put_picture(strio, "image/jpeg", { "message" => "#{message} You can create your own here #{APP_URL}" })
       photo_id = response['id']
       photo = graph.get_object(photo_id)
 

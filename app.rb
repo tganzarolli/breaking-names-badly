@@ -133,5 +133,5 @@ end
 
 get '/auth/facebook/callback' do
 	session[:access_token] = authenticator.get_access_token(params[:code])
-	redirect '/'
+	redirect "https://apps.facebook.com/breaking_names_badly/"
 end
